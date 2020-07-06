@@ -1,0 +1,90 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,900;1,300;1,400;1,500;1,600;1,900&display=swap');
+
+
+*{
+  margin: 0;
+}
+body{
+  font-family: Raleway;
+  font-size: 18px;
+}
+.container{
+  margin:0 auto ;
+  text-align: center;
+}
+.container h1{
+  margin: 1em 0;
+
+}
+.container p{
+  line-height: 1.7rem;
+}
+.logo{
+  width: 120px;
+      margin: 0 auto;
+}
+.left{
+  color: white;
+  background: transparent linear-gradient(180deg, #6650F2 0%, #9E91F2 100%) 0% 0% no-repeat padding-box;
+  padding:2em 1em;
+}
+
+p.description{
+  
+  font-weight:600; 
+}
+p.secondText{
+  color: #D7D1FB;
+  margin:2em 0; 
+}
+.right p{
+      padding: 2em 0 1em;
+}
+
+input,button{
+      width: calc(100% - 3em);
+      outline: none;
+    padding: 0.5em;
+    margin: 1em;
+    font-size: 1.3em;
+}
+button{
+    width: calc(100% - 2em);
+  color: white;
+  background-color: #6650F2;
+  border:none;
+  cursor: pointer;
+}
+.attention{
+      width: 100%;
+    text-align: center;
+    margin-top: 0.5em;
+}
+.me{
+  width: 3em;
+}
+.arrow{
+   width: 15em;
+}
+.text{
+  display: flex;
+  
+      padding-bottom: 50px;
+
+}
+.bbb{flex: 0 0 50%;}
+.aaa{
+   background-image: url("https://znews-photo.zadn.vn/w480/Uploaded/ovhpaob/2020_07_06/Nguyen_Manh_Hung.jpeg");
+  background-position: center center;
+  background-size: cover;
+   flex: 0 0 25%;
+}
+@media only screen and (min-width: 768px) {
+body{
+  font-size: 20px;
+}
+  button{
+    width: 60% !important;
+  }
+}
