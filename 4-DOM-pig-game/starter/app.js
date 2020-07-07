@@ -9,20 +9,27 @@ GAME RULES:
 
 */
 
-var diceDom,score,current,activenumber,playing;
+var diceDom,score,current,activenumber,playing,lastdice,winNumber;
 init();
 
+
 function init(){
-	document.querySelector('.dice').style.display='none';
+	document.querySelector('.dice.dice2').style.display='none';
+	document.querySelector('.dice.dice1').style.display='none';
 score=[0,0];
 current =0;
 activenumber=0;
 playing=true;
+
+winNumber=20;
+
 document.getElementById("current-0").textContent=0;
 document.getElementById("current-1").textContent=0;
 document.getElementById("score-0").textContent=0;
 document.getElementById("score-1").textContent=0;
-diceDom=document.querySelector('.dice');
+diceDom1=document.querySelector('.dice.dice1');
+diceDom2=document.querySelector('.dice.dice2');
+
 document.querySelector('.player-0-panel').classList.add('active');
 	document.querySelector('.player-1-panel').classList.remove('active');
 	document.querySelector('.player-0-panel').classList.remove('winner');
@@ -40,36 +47,61 @@ current =0;
 	document.querySelector('.player-0-panel').classList.toggle('active');
 	document.querySelector('.player-1-panel').classList.toggle('active');
 	
-	diceDom.style.display='none';
+	diceDom1.style.display='none';
+	diceDom2.style.display='none';
 }
+
+
 document.querySelector('.btn-roll').addEventListener('click',function () {
 	if(playing){
 	
 	
-	diceDom.style.display='block';
+	diceDom1.style.display='block';
+	diceDom2.style.display='block';
+
+
+	var diceRandom1=Math.floor(Math.random()*6 +1);
+	var diceRandom2=Math.floor(Math.random()*6 +1);
 	
+diceDom1.src="dice-"+diceRandom1+".png";
+diceDom2.src="dice-"+diceRandom2+".png";
+var diceRandom=diceRandom1 + diceRandom2;
 
+// if(diceRandom===6 && lastdice===6){
+// 	score[activenumber]= 0;
+// 	// display
+// 	document.getElementById("current-"+ activenumber).textContent=0;
 
-	var diceRandom=Math.floor(Math.random()*6 +1);
-diceDom.src="dice-"+diceRandom+".png";
-	if(diceRandom!==1){
+// }
+	if(diceRandom1!==1 && diceRandom2!==1 ){
+
+	
 	current += diceRandom;
 	// display
 	document.getElementById("current-"+ activenumber).textContent=current;
+}
 
 }
+
 else{
 	next();
 }
-}
+// lastdice=diceRandom;
+
 
 });
+
+
+
+
+
+
 document.querySelector('.btn-hold').addEventListener('click',function(){
 	if(playing){
 
 	score[activenumber]+=current;
 document.querySelector('#score-'+ activenumber).textContent=score[activenumber];
-if(score[activenumber]>=20){
+if(score[activenumber]>=winNumber){
 	playing=false;
 	document.querySelector('.btn-hold').style.pointerEvents='none';
 	document.querySelector('.btn-roll').style.pointerEvents='none';
@@ -87,4 +119,9 @@ else{
 }
 });
 document.querySelector('.btn-new').addEventListener('click',init);
+function changeNumber(){
+	var numberInput=document.getElementById('number').value;
+	winNumber=numberInput;
+}
+document.querySelector('.btn-change').addEventListener('click',changeNumber);
 
