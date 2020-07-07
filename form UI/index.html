@@ -12,16 +12,28 @@
     
   </head>
   <body>
+    <div class="pro-container">
+      <div class="proto"></div>
+      <div class="proto"></div>
+      <div class="proto"></div>
+      <div class="proto"></div>
+
+
+    </div>
+    
+
+   
     <div class="container">
       <div class="inner">
         <div class="left">
+         
           <div class="logo">
             <img src="images/Union 1.svg" alt="logo union">
           </div>
           <div class="content">
-            <h1>Complete UI Design Course</h1>
-            <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc malesuada dictum enim ut elementum. Mauris fringilla iaculis luctus.</p>
-            <p class="secondText">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc malesuada dictum enim ut elementum. </p>
+            <h1><span>Complete</span> UI Design Course</h1>
+            <p class="description">Today, we're taking that UI design and making it a reality in the browser by stepping into the realm of frontend development. We'll write the HTML, responsive CSS and then a little bit of JavaScript for some interactivity.</p>
+            <p class="secondText">A few days ago, I released a tutorial where I designed an email capture UI in Adobe XD from scratch </p>
             
           </div>
         </div>
@@ -44,4 +56,28 @@
     <div class="bbb">Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc malesuada Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc malesuada adipiscing elit. Nunc malesuada </div>
 <div class="aaa"></div> -->
     </div>
+
+    <script>
+      let left=document.querySelector('.left');
+      let content=document.querySelector('.content');
+      let protos= document.querySelectorAll('.proto');
+
+
+left.addEventListener("mousemove", (event)=> {
+   let move=(event.clientX * 0.05) + 4;
+  let move2=(event.clientX * 0.003);
+   content.style.transform= 'translateX(-'+move2+'%)';
+   protos.forEach((proto)=>{
+    proto.style.transform= 'translateX('+move+'%)';
+   })
+  
+});
+
+
+
+
+
+    </script>
   </body>
+
+  </html>
