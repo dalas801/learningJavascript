@@ -168,35 +168,74 @@ questionds.prototype.showQuestion=function(){
 		console.log(i+'. '+this.answer[i]);
 	}
 };
-questionds.prototype.correctQuestion=function(user){
+questionds.prototype.correctQuestion=function(user,callback){
+	
+		var sc;
 	if(user===this.correctAnswer){
 		console.log('That\'s correct');
+		sc=callback(true);
+		
 	}
 	else
 	{
 		console.log('That\'s wrong');
+		sc=callback(false);
 	}
-	
+
+	this.showScore(sc);
+
 
 };
+
+
+function score(){
+var sc=0
+	return function(correct){
+		if(correct){
+		sc++;
+		
+	}
+	return sc;
+}
+
+}
+
+questionds.prototype.showScore=function(score){
+	console.log('Your current score is: ' + score);
+        console.log('------------------------------');
+}
+
+
 var q1=new questionds('She\'s going to university _____ her studies',['For continuing','For continue'],'0');
 var q2=new questionds('Sorry, but this chair is ______.',['not usually go','do not go usually'],'1');
 var q3=new questionds('I ______ bus on Mondays.',['go to work with','go to work by'],'0');
 
+
 var question=[q1,q2,q3];
+
+var keep=score();
+
 function nextQuestion(){
+
 var n=Math.floor(Math.random() * question.length); 
 question[n].showQuestion();
 
+
+
+var user=prompt('Please choose the answer:');
+
 if(user!=='exit')
 {
-var user=prompt('Please choose the answer:');
-question[n].correctQuestion(user);
+
+question[n].correctQuestion(user,keep);
+
 nextQuestion();
 }
 
+
 }
 nextQuestion();
+
 
 })();
 
